@@ -1,2 +1,2 @@
-# quizz_game
-Quizz game made in AngularJs
+# todoList_Angular
+To Do List App made in AngularJS

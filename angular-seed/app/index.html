@@ -14,11 +14,13 @@
   <div ng-show= "showScore"><!--showScore hides all this div when all questions are answered and show score-->
     <h3 class="heading">{{currentQuestion.title}}</h3>
     <h4 class="question">{{currentQuestion.text}}</h4>
+    <p ng-if="!answersGiven[currentQuestion.id]">Choose Atleast one answer</p><!--if ans is chosen it hides-->
+
       <div ng-repeat="option in currentQuestion.options"><!--Looping through the questions one by one-->
-        <input ng-model="answersGiven[currentQuestion.id]" type="radio" value="{{option.id}}"> {{option.text}}<br>
+        <input ng-model="answersGiven[currentQuestion.id]" type="radio" value="{{option.id}}"> {{option.text}}<br><!--ngmodel[key] and value are stored in an object inside controller -->
        </div>
     </div>
-<button ng-show="showScore" ng-click="submitAnswer()" ng-disabled = "!answersGiven[currentQuestion.id]">Submit</button>
+<button ng-show="showScore" ng-click="submitAnswer()" ng-disabled = "!answersGiven[currentQuestion.id]">Submit</button><!--ng-disabled disables button if no answer is provided-->
 <p ng-show= "!showScore">Total score: {{score}}/100</p>
 
 

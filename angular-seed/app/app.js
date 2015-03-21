@@ -11,41 +11,35 @@ angular.module("qanda",[])
 		$scope.score = 0;
 		$scope.showScore = true;
 
+		//getting json
 		$http.get('json/test.json').success(function(data){
-			$scope.questions = data.questions;
-			$scope.solutions = data.solution;
-			$scope.currentQuestion = $scope.questions[0];
+			$scope.questions = data.questions;//storing questions
+			$scope.solutions = data.solution;//soring solutions
+			$scope.currentQuestion = $scope.questions[0]; //getting first question to show first
 		});
 
 		$scope.$watch('answersGiven', function(newVal) {
 			console.log(newVal);
-		}, true);
+		}, true); //checking the answersGiven object behaviour 
 
 		$scope.submitAnswer = function() {
-			// get the score from $scope.solutions
-		
-			var solution = $scope.solutions[$scope.currentQuestion.id];
-			var potentialPoints = solution.value;
-			var percentage = solution.answers[$scope.answersGiven[$scope.currentQuestion.id]];
-			var questionScore = (potentialPoints /100)*percentage;
-			$scope.score += questionScore;
+			var solution = $scope.solutions[$scope.currentQuestion.id]; //getting solutionID
+			var potentialPoints = solution.value; //getting total points
+			var percentage = solution.answers[$scope.answersGiven[$scope.currentQuestion.id]]; //getting each answer ratio
+			var questionScore = (potentialPoints /100)*percentage; //calculating score per question
+			$scope.score += questionScore; //incrementing score
 
-			showNextQuestion();
+			showNextQuestion(); //show new question
 
 		};
-		// update the score by checking the score in $scope.testList.answers
+
 		function showNextQuestion() {
-				$scope.currentQuestionNum++;
+				$scope.currentQuestionNum++; 
 				$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum];
 				if($scope.currentQuestionNum >= 4){
 					$scope.showScore = false;
 				}
 
 		}
-
-		// function showNextQuestion
-		// $scope.currentQuestionNum++
-		// if this is the last question, show the score instead
-		// $sscope.currentQuestion = $scope.testList.questions[$scope.currentQuestionNum];
 	}]);
 

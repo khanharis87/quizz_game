@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="qanda">
+<head>
+  <meta charset="utf-8">
+  <title>QA Game</title>
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="mainCtrl">
+  <div ng-show= "showScore">
+    <h3 class="heading">{{currentQuestion.title}}</h3>
+    <h4 class="question">{{currentQuestion.text}}</h4>
+      <div ng-repeat="option in currentQuestion.options">
+        <input ng-model="answersGiven[currentQuestion.id]" type="radio" value="{{option.id}}"> {{option.text}}<br>
+       </div>
+    </div>
+<button ng-show="showScore" ng-click="submitAnswer()">Submit</button>
+<p ng-show= "!showScore">Total score: {{score}}/100</p>
+
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</body>
+
+ </html>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("qanda",[])
+angular.module("qanda",['ui.bootstrap'])
 	.controller('mainCtrl',['$scope','$http',function($scope,$http){
 		$scope.testList = [];
 		$scope.questions = [];

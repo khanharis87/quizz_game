@@ -39,6 +39,9 @@ angular.module("qanda",['ui.bootstrap'])
 				if($scope.currentQuestionNum >= 4){
 					$scope.showScore = false;
 				}
+		$scope.tryAgain = function(){
+			window.location.reload();
+		}		
 
 		}
 	}]);

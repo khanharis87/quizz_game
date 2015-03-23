@@ -1,3 +1,36 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+.alert.ng-enter,
+.alert.ng-leave {
+	opacity: 0.5;
+	-webkit-transition : opacity .5s ease-out;
+	transition : opacity .5s ease-out;
+}
+
+.alert.ng-enter{
+	opacity: 0;
+}
+
+.alert.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+
+.alert.ng-leave{
+	opacity: 1;
+}
+
+.alert.ng-leave.ng-leave-active {
+	opacity: 0;
+}
+
+.score{
+  position: relative;
+  left: 40%;
+}
+
+.try-again-btn{
+	position: relative;
+	left: 6%;
+}

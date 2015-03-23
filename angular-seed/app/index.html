@@ -35,15 +35,15 @@
       <button class="btn btn-success" ng-show="showScore" ng-click="submitAnswer()" ng-disabled = "!answersGiven[currentQuestion.id]">Submit</button><!--ng-disabled disables button if no answer is provided-->
       
       <div class="score" ng-show= "!showScore" ng-cloak>
-      <p>Total score: {{score}}/100</p>
-      <button type="submit" ng-click="tryAgain()" class="btn btn-primary btn-lg">Try Again</button>
+      <h3>Total score: {{score}}/100</h3>
+      <button type="submit" ng-click="tryAgain()" class="btn btn-primary try-again-btn">Try Again</button>
       </div>
 
     </div>
   </div>
 </div>
-
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="app.js"></script>
 </body>

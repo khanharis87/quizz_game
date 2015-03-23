@@ -10,6 +10,7 @@ angular.module("qanda",['ui.bootstrap'])
 		$scope.answersGiven = {};
 		$scope.score = 0;
 		$scope.showScore = true;
+		$scope.progressbarWidth = "20";
 
 		//getting json
 		$http.get('json/test.json').success(function(data){
@@ -30,8 +31,14 @@ angular.module("qanda",['ui.bootstrap'])
 			$scope.score += questionScore; //incrementing score
 
 			showNextQuestion(); //show new question
+			updateProgressbar();
 
 		};
+
+		function updateProgressbar(){
+			$scope.progressbarWidth = parseInt($scope.progressbarWidth) + 20;
+			$scope.progressbarWidth.toString();
+		}
 
 		function showNextQuestion() {
 				$scope.currentQuestionNum++; 

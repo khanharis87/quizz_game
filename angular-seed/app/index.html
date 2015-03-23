@@ -15,7 +15,12 @@
   <div class="col-md-10 col-md-offset-1">
     <div class= "jumbotron">
 
+     <div class="progress progress-striped active">
+        <div class="progress-bar" style="width:{{progressbarWidth}}%"></div>
+      </div>
+
     <div ng-show= "showScore" ng-cloak><!--showScore hides all this div when all questions are answered and show score-->
+
       <h3 class="heading">{{currentQuestion.title}}</h3>
       <h4 class="question">{{currentQuestion.text}}</h4>
       <div class="alert alert-dismissible alert-warning" ng-if="!answersGiven[currentQuestion.id]" ng-cloak>

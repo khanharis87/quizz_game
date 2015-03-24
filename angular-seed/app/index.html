@@ -19,7 +19,7 @@
         <div class="progress-bar" style="width:{{progressbarWidth}}%"></div>
       </div>
 
-    <div ng-show= "showScore" ng-cloak><!--showScore hides all this div when all questions are answered and show score-->
+    <div ng-show= "!showScore" ng-cloak><!--showScore hides all this div when all questions are answered and show score-->
 
       <h3 class="heading">{{currentQuestion.title}}</h3>
       <h4 class="question">{{currentQuestion.text}}</h4>
@@ -28,14 +28,25 @@
       </div>
 
         <div ng-repeat="option in currentQuestion.options" class="form-group" ng-cloak><!--Looping through the questions one by one-->
-          <input ng-model="answersGiven[currentQuestion.id]" type="radio" value="{{option.id}}"> {{option.text}}<br><!--ngmodel[key] and value are stored in an object inside controller -->
+           <div class="well well-sm">
+            <input ng-model="answersGiven[currentQuestion.id]" type="radio" value="{{option.id}}"> {{option.text}}<!--ngmodel[key] and value are stored in an object inside controller -->
+          </div>
          </div>
       </div>
 
-      <button class="btn btn-success" ng-show="showScore" ng-click="submitAnswer()" ng-disabled = "!answersGiven[currentQuestion.id]">Submit</button><!--ng-disabled disables button if no answer is provided-->
+      <button class="btn btn-success" ng-show="!showScore" ng-click="submitAnswer()" ng-disabled = "!answersGiven[currentQuestion.id]">Submit</button><!--ng-disabled disables button if no answer is provided-->
       
-      <div class="score" ng-show= "!showScore" ng-cloak>
+      <div class="score" ng-show= "showScore" ng-cloak>
       <h3>Total score: {{score}}/100</h3>
+        <div ng-if="score >= 70" class="alert alert-dismissible alert-success">
+          <strong> Good Job!</strong>
+        </div>
+        <div ng-if= "score >= 50 && score < 70" class="alert alert-dismissible alert-info">
+          <strong> This is average! You can do better</strong>
+        </div>
+        <div ng-if= "score < 50" class="alert alert-dismissible alert-danger">
+          <strong>You are not uptodate with trends!</strong>
+        </div>
       <button type="submit" ng-click="tryAgain()" class="btn btn-primary try-again-btn">Try Again</button>
       </div>
 

@@ -34,3 +34,10 @@
 	position: relative;
 	left: 6%;
 }
+
+.alert-success,
+.alert-info,
+.alert-danger {
+	width: 250px;
+	text-align: center;
+}

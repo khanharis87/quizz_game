@@ -9,7 +9,7 @@ angular.module("qanda",['ngAnimate','ui.bootstrap'])
 		$scope.currentQuestionNum = 0;
 		$scope.answersGiven = {};
 		$scope.score = 0;
-		$scope.showScore = true;
+		$scope.showScore = false;
 		$scope.progressbarWidth = "20";
 
 		//getting json
@@ -36,7 +36,7 @@ angular.module("qanda",['ngAnimate','ui.bootstrap'])
 		};
 
 		function updateProgressbar(){
-			$scope.progressbarWidth = parseInt($scope.progressbarWidth) + 20;
+			$scope.progressbarWidth = parseInt($scope.progressbarWidth, 10) + 20;
 			$scope.progressbarWidth.toString();
 		}
 
@@ -44,7 +44,7 @@ angular.module("qanda",['ngAnimate','ui.bootstrap'])
 				$scope.currentQuestionNum++; 
 				$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum];
 				if($scope.currentQuestionNum >= 4){
-					$scope.showScore = false;
+					$scope.showScore = true;
 				}
 		$scope.tryAgain = function(){
 			window.location.reload();

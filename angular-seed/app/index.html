@@ -9,7 +9,8 @@
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-journal.css">
 </head>
 
-<body ng-controller="mainCtrl" class="container"><!--main Angular controller-->
+<!--main Angular controller-->
+<body ng-controller="mainCtrl" class="container">
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
@@ -19,15 +20,18 @@
         <div class="progress-bar" style="width:{{progressbarWidth}}%"></div>
       </div>
 
-    <div ng-show= "!showScore" ng-cloak><!--showScore hides all this div when all questions are answered and show score-->
-
+<!--showScore hides all this div when all questions are answered and show score-->
+    <div ng-show= "!showScore" ng-cloak>
       <h3 class="heading">{{currentQuestion.title}}</h3>
       <h4 class="question">{{currentQuestion.text}}</h4>
+
+      <!--if ans is chosen it hides-->
       <div class="alert alert-dismissible alert-warning" ng-if="!answersGiven[currentQuestion.id]" ng-cloak>
-        <strong>Choose one answer</strong><!--if ans is chosen it hides-->
+        <strong>Choose one answer</strong>
       </div>
 
-        <div ng-repeat="option in currentQuestion.options" class="form-group" ng-cloak><!--Looping through the questions one by one-->
+      <!--Looping through the questions one by one-->
+        <div ng-repeat="option in currentQuestion.options" class="form-group" ng-cloak>
            <div class="well well-sm">
             <input ng-model="answersGiven[currentQuestion.id]" type="radio" value="{{option.id}}"> {{option.text}}<!--ngmodel[key] and value are stored in an object inside controller -->
           </div>
